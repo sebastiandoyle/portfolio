@@ -207,7 +207,7 @@ export function useVoidAI() {
               tools,
               tool_choice: 'auto',
               temperature: 0.8,
-              max_tokens: 2000,
+              max_completion_tokens: 2000,
             }),
           }
         );
