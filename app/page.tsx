@@ -15,7 +15,7 @@ const projects = [
       'Optimize your 90-minute focus blocks around your biology. Based on Huberman\'s circadian protocol.',
     tags: ['React', 'Chronobiology', 'Productivity'],
     icon: '\u{1F9E0}',
-    href: '#',
+    href: 'https://ultradian-three.vercel.app',
   },
   {
     title: 'Imposter',
@@ -156,7 +156,7 @@ export default function Home() {
 
                 <div className="flex gap-3">
                   <a
-                    href="https://github.com/sebastiandoyle"
+                    href="https://github.com/sebastiandoyle/foundry"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-medium px-4 py-2 rounded-lg border transition-all duration-300 hover:translate-y-[-1px]"
