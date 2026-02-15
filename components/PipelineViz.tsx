@@ -78,14 +78,14 @@ export default function PipelineViz() {
               className="flex-1 rounded-xl border p-5 text-center transition-all duration-500"
               style={{
                 backgroundColor:
-                  i <= activeIndex ? 'rgba(139, 92, 246, 0.08)' : 'var(--card-bg)',
+                  i <= activeIndex ? 'rgba(var(--primary-rgb), 0.08)' : 'var(--card-bg)',
                 borderColor:
                   i <= activeIndex
-                    ? 'rgba(139, 92, 246, 0.35)'
+                    ? 'rgba(var(--primary-rgb), 0.35)'
                     : 'var(--card-border)',
                 boxShadow:
                   i <= activeIndex
-                    ? '0 0 30px rgba(139, 92, 246, 0.08)'
+                    ? '0 0 30px rgba(var(--primary-rgb), 0.08)'
                     : 'none',
               }}
               initial={{ opacity: 0, y: 20 }}
@@ -97,13 +97,13 @@ export default function PipelineViz() {
               transition={{ duration: 0.5, delay: i * 0.15 }}
             >
               <div className="text-2xl mb-2">{phase.icon}</div>
-              <div className="text-xs uppercase tracking-widest mb-1" style={{ color: '#94a3b8' }}>
+              <div className="text-xs uppercase tracking-widest mb-1" style={{ color: 'var(--muted)' }}>
                 Phase {phase.id}
               </div>
               <div className="font-semibold text-sm" style={{ color: 'var(--foreground)' }}>
                 {phase.name}
               </div>
-              <div className="text-xs mt-1" style={{ color: '#64748b' }}>
+              <div className="text-xs mt-1" style={{ color: 'var(--muted-dim)' }}>
                 {phase.description}
               </div>
               <div
@@ -124,8 +124,8 @@ export default function PipelineViz() {
                   style={{
                     backgroundColor:
                       i < activeIndex
-                        ? 'rgba(139, 92, 246, 0.5)'
-                        : 'rgba(139, 92, 246, 0.1)',
+                        ? 'rgba(var(--primary-rgb), 0.5)'
+                        : 'rgba(var(--primary-rgb), 0.1)',
                   }}
                   initial={{ scaleX: 0 }}
                   animate={hasAnimated ? { scaleX: 1 } : { scaleX: 0 }}
@@ -149,7 +149,7 @@ export default function PipelineViz() {
                   backgroundColor:
                     i <= activeIndex ? 'var(--primary)' : 'transparent',
                   borderColor:
-                    i <= activeIndex ? 'var(--primary)' : 'rgba(139, 92, 246, 0.2)',
+                    i <= activeIndex ? 'var(--primary)' : 'rgba(var(--primary-rgb), 0.2)',
                 }}
                 initial={{ scale: 0 }}
                 animate={hasAnimated ? { scale: 1 } : { scale: 0 }}
@@ -161,8 +161,8 @@ export default function PipelineViz() {
                   style={{
                     backgroundColor:
                       i < activeIndex
-                        ? 'rgba(139, 92, 246, 0.4)'
-                        : 'rgba(139, 92, 246, 0.1)',
+                        ? 'rgba(var(--primary-rgb), 0.4)'
+                        : 'rgba(var(--primary-rgb), 0.1)',
                   }}
                   initial={{ scaleY: 0 }}
                   animate={hasAnimated ? { scaleY: 1 } : { scaleY: 0 }}
@@ -177,10 +177,10 @@ export default function PipelineViz() {
               className="flex-1 rounded-lg border p-4"
               style={{
                 backgroundColor:
-                  i <= activeIndex ? 'rgba(139, 92, 246, 0.06)' : 'var(--card-bg)',
+                  i <= activeIndex ? 'rgba(var(--primary-rgb), 0.06)' : 'var(--card-bg)',
                 borderColor:
                   i <= activeIndex
-                    ? 'rgba(139, 92, 246, 0.25)'
+                    ? 'rgba(var(--primary-rgb), 0.25)'
                     : 'var(--card-border)',
               }}
               initial={{ opacity: 0, x: -10 }}
@@ -191,12 +191,12 @@ export default function PipelineViz() {
             >
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-lg">{phase.icon}</span>
-                <span className="text-xs uppercase tracking-widest" style={{ color: '#94a3b8' }}>
+                <span className="text-xs uppercase tracking-widest" style={{ color: 'var(--muted)' }}>
                   Phase {phase.id}
                 </span>
               </div>
               <div className="font-semibold text-sm">{phase.name}</div>
-              <div className="text-xs mt-0.5" style={{ color: '#64748b' }}>
+              <div className="text-xs mt-0.5" style={{ color: 'var(--muted-dim)' }}>
                 {phase.description}
               </div>
             </motion.div>

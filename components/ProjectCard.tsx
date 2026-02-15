@@ -7,7 +7,7 @@ interface ProjectCardProps {
   description: string;
   tags: string[];
   href?: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
 export default function ProjectCard({
@@ -42,8 +42,8 @@ export default function ProjectCard({
           className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse at center, rgba(139, 92, 246, 0.06), transparent 70%)',
-            boxShadow: '0 0 40px rgba(139, 92, 246, 0.08)',
+              'radial-gradient(ellipse at center, rgba(var(--primary-rgb), 0.06), transparent 70%)',
+            boxShadow: '0 0 40px rgba(var(--primary-rgb), 0.08)',
           }}
         />
 
@@ -51,7 +51,7 @@ export default function ProjectCard({
         <div
           className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
           style={{
-            border: '1px solid rgba(139, 92, 246, 0.3)',
+            border: '1px solid rgba(var(--primary-rgb), 0.3)',
           }}
         />
 
@@ -62,7 +62,7 @@ export default function ProjectCard({
             {title}
           </h3>
 
-          <p className="text-sm leading-relaxed mb-4" style={{ color: '#94a3b8' }}>
+          <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--muted)' }}>
             {description}
           </p>
 
@@ -72,9 +72,9 @@ export default function ProjectCard({
                 key={tag}
                 className="text-xs px-2.5 py-1 rounded-full font-medium"
                 style={{
-                  backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                  backgroundColor: 'rgba(var(--primary-rgb), 0.1)',
                   color: 'var(--primary-light)',
-                  border: '1px solid rgba(139, 92, 246, 0.15)',
+                  border: '1px solid rgba(var(--primary-rgb), 0.15)',
                 }}
               >
                 {tag}

@@ -1,14 +1,134 @@
 @import "tailwindcss";
 
-:root {
+:root,
+[data-theme="cosmos"] {
   --background: #050510;
   --foreground: #e2e8f0;
   --primary: #8B5CF6;
   --primary-light: #A78BFA;
+  --primary-rgb: 139, 92, 246;
   --secondary: #3B82F6;
+  --secondary-rgb: 59, 130, 246;
   --accent: #06B6D4;
   --card-bg: #0F0F23;
   --card-border: rgba(139, 92, 246, 0.15);
+  --muted: #94a3b8;
+  --muted-strong: #cbd5e1;
+  --muted-dim: #64748b;
+  --muted-faint: #475569;
+  --star-color: 255, 255, 255;
+  --tag-bg: rgba(59, 130, 246, 0.08);
+  --tag-color: #93c5fd;
+  --tag-border: rgba(59, 130, 246, 0.15);
+  --icon-stroke: #a78bfa;
+  --btn-primary-bg: rgba(139, 92, 246, 0.08);
+  --btn-primary-border: rgba(139, 92, 246, 0.3);
+  --btn-secondary-bg: rgba(59, 130, 246, 0.08);
+  --btn-secondary-border: rgba(59, 130, 246, 0.3);
+  --btn-secondary-color: #93c5fd;
+  --card-bg-alpha: rgba(15, 15, 35, 0.6);
+  --selection-bg: rgba(139, 92, 246, 0.3);
+  --scroll-track: rgba(255,255,255,0.02);
+  --scroll-thumb: rgba(139,92,246,0.3);
+}
+
+/* Cloud Dancer — Pantone 2026 with Powdered Pastels palette */
+/* Cloud Dancer #F0EDE5, Lemon Icing #F3EDC8, Nimbus Cloud #C5CDD4,
+   Raindrops on Roses #EEDDD5, Ice Melt #C0D5DE, Peach Dust #E8D8CC,
+   Almost Aqua #C2D4C8, Orchid Tint #D6CCD8 */
+[data-theme="cloud-dancer"] {
+  --background: #F0EDE5;
+  --foreground: #2C2C2C;
+  --primary: #9B8EA0;
+  --primary-light: #D6CCD8;
+  --primary-rgb: 155, 142, 160;
+  --secondary: #8FAAB5;
+  --secondary-rgb: 143, 170, 181;
+  --accent: #9AB5A0;
+  --card-bg: #FAFAF7;
+  --card-border: rgba(198, 188, 180, 0.35);
+  --muted: #7A7368;
+  --muted-strong: #4A4540;
+  --muted-dim: #9E978E;
+  --muted-faint: #C4BEB6;
+  --star-color: 192, 213, 222;
+  --tag-bg: rgba(192, 213, 222, 0.25);
+  --tag-color: #5E7A82;
+  --tag-border: rgba(192, 213, 222, 0.4);
+  --icon-stroke: #9B8EA0;
+  --btn-primary-bg: rgba(214, 204, 216, 0.2);
+  --btn-primary-border: rgba(214, 204, 216, 0.5);
+  --btn-secondary-bg: rgba(192, 213, 222, 0.2);
+  --btn-secondary-border: rgba(192, 213, 222, 0.5);
+  --btn-secondary-color: #5E7A82;
+  --card-bg-alpha: rgba(250, 250, 247, 0.85);
+  --selection-bg: rgba(214, 204, 216, 0.3);
+  --scroll-track: rgba(0,0,0,0.02);
+  --scroll-thumb: rgba(155,142,160,0.25);
+}
+
+/* Midnight — True black, electric accents */
+[data-theme="midnight"] {
+  --background: #000000;
+  --foreground: #F0F0F0;
+  --primary: #00D4FF;
+  --primary-light: #33DDFF;
+  --primary-rgb: 0, 212, 255;
+  --secondary: #0088FF;
+  --secondary-rgb: 0, 136, 255;
+  --accent: #00FFD4;
+  --card-bg: #0A0A0A;
+  --card-border: rgba(0, 212, 255, 0.12);
+  --muted: #888888;
+  --muted-strong: #CCCCCC;
+  --muted-dim: #555555;
+  --muted-faint: #333333;
+  --star-color: 0, 212, 255;
+  --tag-bg: rgba(0, 136, 255, 0.08);
+  --tag-color: #66BBFF;
+  --tag-border: rgba(0, 136, 255, 0.15);
+  --icon-stroke: #33DDFF;
+  --btn-primary-bg: rgba(0, 212, 255, 0.08);
+  --btn-primary-border: rgba(0, 212, 255, 0.3);
+  --btn-secondary-bg: rgba(0, 136, 255, 0.08);
+  --btn-secondary-border: rgba(0, 136, 255, 0.3);
+  --btn-secondary-color: #66BBFF;
+  --card-bg-alpha: rgba(10, 10, 10, 0.8);
+  --selection-bg: rgba(0, 212, 255, 0.25);
+  --scroll-track: rgba(255,255,255,0.02);
+  --scroll-thumb: rgba(0,212,255,0.3);
+}
+
+/* Ember — Warm dark, amber/orange */
+[data-theme="ember"] {
+  --background: #0C0806;
+  --foreground: #F0E6D8;
+  --primary: #E8772E;
+  --primary-light: #F09848;
+  --primary-rgb: 232, 119, 46;
+  --secondary: #D4603A;
+  --secondary-rgb: 212, 96, 58;
+  --accent: #F5B041;
+  --card-bg: #1A120D;
+  --card-border: rgba(232, 119, 46, 0.12);
+  --muted: #A0907E;
+  --muted-strong: #D4C8B8;
+  --muted-dim: #6B5E50;
+  --muted-faint: #4A3F34;
+  --star-color: 240, 152, 72;
+  --tag-bg: rgba(212, 96, 58, 0.08);
+  --tag-color: #E8A070;
+  --tag-border: rgba(212, 96, 58, 0.15);
+  --icon-stroke: #F09848;
+  --btn-primary-bg: rgba(232, 119, 46, 0.08);
+  --btn-primary-border: rgba(232, 119, 46, 0.3);
+  --btn-secondary-bg: rgba(212, 96, 58, 0.08);
+  --btn-secondary-border: rgba(212, 96, 58, 0.3);
+  --btn-secondary-color: #E8A070;
+  --card-bg-alpha: rgba(26, 18, 13, 0.7);
+  --selection-bg: rgba(232, 119, 46, 0.25);
+  --scroll-track: rgba(255,255,255,0.02);
+  --scroll-thumb: rgba(232,119,46,0.3);
 }
 
 @theme inline {
@@ -34,9 +154,9 @@ body {
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
-::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.3); border-radius: 3px; }
+::-webkit-scrollbar-track { background: var(--scroll-track); }
+::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 3px; }
 
 ::selection {
-  background: rgba(139, 92, 246, 0.3);
+  background: var(--selection-bg);
 }

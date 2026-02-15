@@ -1,8 +1,10 @@
 import { create } from 'zustand';
 
-export type VoidPhase = 'darkness' | 'onboarding' | 'apikey' | 'listening';
+export type VoidPhase = 'darkness' | 'onboarding' | 'apikey' | 'listening' | 'transformation' | 'showcase' | 'bridge';
 
 export type ComponentMood = 'purple' | 'blue' | 'green' | 'amber' | 'rose' | 'cyan';
+
+export type CanvasMode = 'normal' | 'accelerating' | 'settling' | 'fading';
 
 export interface VoidComponent {
   id: string;
@@ -21,6 +23,9 @@ interface VoidState {
   transcript: string;
   voidMessage: string | null;
   isProcessing: boolean;
+  interactionCount: number;
+  listeningStartedAt: number | null;
+  canvasMode: CanvasMode;
 
   setPhase: (phase: VoidPhase) => void;
   setApiKey: (key: string) => void;
@@ -29,6 +34,9 @@ interface VoidState {
   setTranscript: (text: string) => void;
   setVoidMessage: (msg: string | null) => void;
   setIsProcessing: (v: boolean) => void;
+  incrementInteraction: () => void;
+  setListeningStartedAt: (time: number | null) => void;
+  setCanvasMode: (mode: CanvasMode) => void;
 }
 
 export const useVoidStore = create<VoidState>((set) => ({
@@ -38,6 +46,9 @@ export const useVoidStore = create<VoidState>((set) => ({
   transcript: '',
   voidMessage: null,
   isProcessing: false,
+  interactionCount: 0,
+  listeningStartedAt: null,
+  canvasMode: 'normal',
 
   setPhase: (phase) => set({ phase }),
   setApiKey: (apiKey) => set({ apiKey }),
@@ -48,4 +59,8 @@ export const useVoidStore = create<VoidState>((set) => ({
   setTranscript: (transcript) => set({ transcript }),
   setVoidMessage: (voidMessage) => set({ voidMessage }),
   setIsProcessing: (isProcessing) => set({ isProcessing }),
+  incrementInteraction: () =>
+    set((s) => ({ interactionCount: s.interactionCount + 1 })),
+  setListeningStartedAt: (listeningStartedAt) => set({ listeningStartedAt }),
+  setCanvasMode: (canvasMode) => set({ canvasMode }),
 }));

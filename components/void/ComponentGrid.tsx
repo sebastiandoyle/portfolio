@@ -56,6 +56,7 @@ export default function ComponentGrid() {
             return (
               <ComponentShell
                 key={component.id}
+                layoutId={component.id}
                 mood={component.mood}
                 name={component.name}
                 onRemove={() => removeComponent(component.id)}

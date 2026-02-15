@@ -5,12 +5,13 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'Sebastian Doyle - Product Engineer',
+  title: 'Sebastian Doyle — AI Systems Engineer',
   description:
-    'Product-minded engineer who automates everything. Builder of Foundry, an autonomous iOS app pipeline.',
+    "I close the gap between 'we should use AI' and 'it's in production.' Portfolio, case studies, and projects.",
   openGraph: {
-    title: 'Sebastian Doyle',
-    description: 'Product-minded engineer who automates everything.',
+    title: 'Sebastian Doyle — AI Systems Engineer',
+    description:
+      "I close the gap between 'we should use AI' and 'it's in production.'",
     type: 'website',
   },
 };

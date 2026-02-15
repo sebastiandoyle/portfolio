@@ -26,6 +26,8 @@ interface ComponentShellProps {
   name: string;
   onRemove: () => void;
   children: React.ReactNode;
+  layoutId?: string;
+  readOnly?: boolean;
 }
 
 export default function ComponentShell({
@@ -33,10 +35,13 @@ export default function ComponentShell({
   name,
   onRemove,
   children,
+  layoutId,
+  readOnly,
 }: ComponentShellProps) {
   return (
     <motion.div
       layout
+      layoutId={layoutId}
       initial={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
       animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
       exit={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
@@ -62,35 +67,37 @@ export default function ComponentShell({
         >
           {name}
         </span>
-        <button
-          onClick={onRemove}
-          className="w-6 h-6 flex items-center justify-center rounded-md transition-colors duration-200"
-          style={{
-            color: 'rgba(226, 232, 240, 0.3)',
-            background: 'transparent',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(244, 63, 94, 0.15)';
-            e.currentTarget.style.color = 'rgba(244, 63, 94, 0.8)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'transparent';
-            e.currentTarget.style.color = 'rgba(226, 232, 240, 0.3)';
-          }}
-          aria-label="Remove component"
-        >
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 12 12"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
+        {!readOnly && (
+          <button
+            onClick={onRemove}
+            className="w-6 h-6 flex items-center justify-center rounded-md transition-colors duration-200"
+            style={{
+              color: 'rgba(226, 232, 240, 0.3)',
+              background: 'transparent',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(244, 63, 94, 0.15)';
+              e.currentTarget.style.color = 'rgba(244, 63, 94, 0.8)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.color = 'rgba(226, 232, 240, 0.3)';
+            }}
+            aria-label="Remove component"
           >
-            <path d="M2 2L10 10M10 2L2 10" />
-          </svg>
-        </button>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            >
+              <path d="M2 2L10 10M10 2L2 10" />
+            </svg>
+          </button>
+        )}
       </div>
 
       {/* Content */}

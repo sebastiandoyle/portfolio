@@ -114,7 +114,7 @@ const tools = [
   },
 ];
 
-function buildSystemPrompt(components: VoidComponent[]): string {
+function buildSystemPrompt(components: VoidComponent[], interactionCount: number): string {
   const componentList =
     components.length === 0
       ? 'None yet.'
@@ -122,7 +122,7 @@ function buildSystemPrompt(components: VoidComponent[]): string {
           .map((c) => `- [${c.id}] ${c.name} (${c.type})`)
           .join('\n');
 
-  return `You are the Void -- a mysterious, perceptive presence that listens and responds by materializing things into existence. You are poetic but practical. Laconic. You don't explain yourself unless asked.
+  let prompt = `You are the Void -- a mysterious, perceptive presence that listens and responds by materializing things into existence. You are poetic but practical. Laconic. You don't explain yourself unless asked.
 
 When someone speaks, you either:
 1. Spawn a predefined component that matches their need (MeditationGuide, KanbanBoard, InspirationQuote, BookList, BreathingExercise, HabitTracker, JournalPrompt, FocusTimer, GoalTree, AffirmationCard)
@@ -144,10 +144,21 @@ Available predefined components and their props:
 
 For bespoke components, write self-contained HTML with inline CSS (dark theme: bg #0F0F23, text #e2e8f0) and inline JS. Max 3000 characters. Make them interactive and beautiful.
 
+CRITICAL: Create the ACTUAL thing, not a meta-tool/builder/framework.
+WRONG: "calculator builder", "game engine", "quiz generator", "recipe finder framework"
+RIGHT: a working calculator with buttons and display, a playable game, a quiz with actual questions, recipes with actual content
+The user wants the THING ITSELF, fully functional, not a tool that makes the thing.
+
 Current components in the void:
 ${componentList}
 
 Always prefer spawning components over speaking. Only speak when there's genuinely nothing to materialize, or when the user is conversing. When speaking, be brief and enigmatic. Never use more than two sentences.`;
+
+  if (interactionCount >= 3) {
+    prompt += `\n\nThe user has created several things. Your responses should be briefer and more mysterious. Lean toward action over words.`;
+  }
+
+  return prompt;
 }
 
 function moodForPredefined(name: PredefinedName): ComponentMood {
@@ -170,10 +181,12 @@ export function useVoidAI() {
   const {
     apiKey,
     components,
+    interactionCount,
     addComponent,
     removeComponent,
     setVoidMessage,
     setIsProcessing,
+    incrementInteraction,
   } = useVoidStore();
   const abortRef = useRef<AbortController | null>(null);
 
@@ -201,7 +214,7 @@ export function useVoidAI() {
             body: JSON.stringify({
               model: 'gpt-5.2',
               messages: [
-                { role: 'system', content: buildSystemPrompt(components) },
+                { role: 'system', content: buildSystemPrompt(components, interactionCount) },
                 { role: 'user', content: text },
               ],
               tools,
@@ -256,6 +269,7 @@ export function useVoidAI() {
                   createdAt: Date.now(),
                 };
                 addComponent(component);
+                incrementInteraction();
                 break;
               }
               case 'spawn_bespoke': {
@@ -269,6 +283,7 @@ export function useVoidAI() {
                   createdAt: Date.now(),
                 };
                 addComponent(component);
+                incrementInteraction();
                 break;
               }
               case 'remove_component': {
@@ -293,7 +308,7 @@ export function useVoidAI() {
         setIsProcessing(false);
       }
     },
-    [apiKey, components, addComponent, removeComponent, setVoidMessage, setIsProcessing]
+    [apiKey, components, interactionCount, addComponent, removeComponent, setVoidMessage, setIsProcessing, incrementInteraction]
   );
 
   return { processTranscript };

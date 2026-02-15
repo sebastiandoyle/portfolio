@@ -51,6 +51,13 @@ export default function StarField() {
     };
     window.addEventListener('mousemove', handleMouseMove);
 
+    let starColor = getComputedStyle(document.documentElement).getPropertyValue('--star-color').trim() || '255, 255, 255';
+
+    // Re-read star color periodically to catch theme changes
+    const colorInterval = setInterval(() => {
+      starColor = getComputedStyle(document.documentElement).getPropertyValue('--star-color').trim() || '255, 255, 255';
+    }, 500);
+
     const animate = () => {
       if (!ctx || !canvas) return;
 
@@ -85,7 +92,7 @@ export default function StarField() {
 
         ctx.beginPath();
         ctx.arc(drawX, drawY, star.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0.05, Math.min(0.8, twinkle))})`;
+        ctx.fillStyle = `rgba(${starColor}, ${Math.max(0.05, Math.min(0.8, twinkle))})`;
         ctx.fill();
       }
 
@@ -98,6 +105,7 @@ export default function StarField() {
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationRef.current);
+      clearInterval(colorInterval);
     };
   }, []);
 
