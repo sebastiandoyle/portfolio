@@ -13,41 +13,20 @@ import {
   LESSONS_LEARNED,
 } from '@/lib/app-pipeline-content';
 
-function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.h2
-      className="text-2xl md:text-3xl font-bold tracking-tight mb-8"
-      style={{ color: 'var(--foreground)' }}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5 }}
-    >
-      {children}
-    </motion.h2>
-  );
-}
-
 export default function AppPipelineContent() {
   return (
     <CaseStudyLayout>
       {/* ===== IMPACT BANNER ===== */}
       <section className="mb-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4"
-            style={{ color: 'var(--foreground)' }}
-          >
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#fafafa] mb-3">
             {PIPELINE_BANNER.title}
           </h1>
-          <p
-            className="text-lg md:text-xl mb-8"
-            style={{ color: 'var(--primary-light)' }}
-          >
+          <p className="text-lg text-[#a1a1aa] mb-8">
             {PIPELINE_BANNER.subtitle}
           </p>
         </motion.div>
@@ -62,13 +41,7 @@ export default function AppPipelineContent() {
           href={PIPELINE_BANNER.cta_primary.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block text-sm font-medium px-6 py-3 rounded-lg border transition-all duration-300 hover:translate-y-[-1px]"
-          style={{
-            background:
-              'linear-gradient(135deg, rgba(var(--primary-rgb), 0.15), rgba(var(--secondary-rgb), 0.15))',
-            borderColor: 'rgba(var(--primary-rgb), 0.3)',
-            color: 'var(--primary-light)',
-          }}
+          className="inline-block text-sm font-medium px-6 py-3 rounded-lg border border-[#27272a] text-[#fafafa] hover:border-[#3b82f6] transition-colors duration-200"
         >
           {PIPELINE_BANNER.cta_primary.label}
         </a>
@@ -76,196 +49,128 @@ export default function AppPipelineContent() {
 
       {/* ===== WHAT IT DOES ===== */}
       <section className="mb-20">
-        <SectionTitle>{PIPELINE_INTRO.headline}</SectionTitle>
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          {PIPELINE_INTRO.headline}
+        </h2>
         <div className="space-y-4">
           {PIPELINE_INTRO.paragraphs.map((p, i) => (
-            <motion.p
+            <p
               key={i}
               className="text-sm leading-relaxed"
-              style={{ color: i === 0 ? 'var(--foreground)' : 'var(--muted)' }}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
+              style={{ color: i === 0 ? '#fafafa' : '#71717a' }}
             >
               {p}
-            </motion.p>
+            </p>
           ))}
         </div>
       </section>
 
       {/* ===== ARCHITECTURE ===== */}
       <section className="mb-20">
-        <SectionTitle>Architecture</SectionTitle>
-        <div className="space-y-4">
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          Architecture
+        </h2>
+        <div className="space-y-0">
           {ARCHITECTURE.map((step, i) => (
-            <motion.div
+            <div
               key={step.name}
-              className="rounded-xl border p-5 flex items-start gap-4"
-              style={{
-                backgroundColor: 'var(--card-bg)',
-                borderColor: 'var(--card-border)',
-              }}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
+              className="flex items-start gap-4 py-5 border-b border-[#27272a] last:border-b-0"
             >
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
-                style={{
-                  background:
-                    'linear-gradient(135deg, rgba(var(--primary-rgb), 0.15), rgba(var(--secondary-rgb), 0.15))',
-                  color: 'var(--primary-light)',
-                  border: '1px solid rgba(var(--primary-rgb), 0.25)',
-                }}
-              >
+              <div className="w-8 h-8 rounded-full border border-[#27272a] flex items-center justify-center text-xs font-medium text-[#a1a1aa] shrink-0">
                 {i + 1}
               </div>
               <div>
-                <h4
-                  className="text-sm font-semibold mb-1"
-                  style={{ color: 'var(--foreground)' }}
-                >
+                <h4 className="text-sm font-semibold text-[#fafafa] mb-1">
                   {step.name}
                 </h4>
-                <p
-                  className="text-xs leading-relaxed"
-                  style={{ color: 'var(--muted)' }}
-                >
+                <p className="text-sm leading-relaxed text-[#71717a]">
                   {step.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
       {/* ===== VERSION EVOLUTION ===== */}
       <section className="mb-20">
-        <SectionTitle>Version Evolution</SectionTitle>
-        <div className="space-y-3">
-          {VERSION_EVOLUTION.map((v, i) => (
-            <motion.div
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          Version Evolution
+        </h2>
+        <div className="space-y-4">
+          {VERSION_EVOLUTION.map((v) => (
+            <div
               key={v.version}
-              className="rounded-xl border p-5"
-              style={{
-                backgroundColor: 'var(--card-bg)',
-                borderColor: 'var(--card-border)',
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
+              className="border-b border-[#27272a] pb-4 last:border-b-0"
             >
-              <div className="flex items-center gap-4 mb-2">
-                <span
-                  className="text-base font-bold"
-                  style={{ color: 'var(--foreground)' }}
-                >
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-sm font-semibold text-[#fafafa]">
                   {v.version}
                 </span>
-                <span
-                  className="text-sm font-mono px-2 py-0.5 rounded"
-                  style={{
-                    backgroundColor: 'rgba(var(--primary-rgb), 0.1)',
-                    color: 'var(--primary-light)',
-                  }}
-                >
+                <span className="text-xs font-mono px-2 py-0.5 rounded bg-[#27272a] text-[#a1a1aa]">
                   {v.successRate}
                 </span>
               </div>
-              <p
-                className="text-xs leading-relaxed"
-                style={{ color: 'var(--muted)' }}
-              >
+              <p className="text-sm leading-relaxed text-[#71717a]">
                 {v.changes}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
       {/* ===== RESULTS ===== */}
       <section className="mb-20">
-        <SectionTitle>{RESULTS.headline}</SectionTitle>
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          {RESULTS.headline}
+        </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
           {RESULTS.stats.map((s) => (
             <MetricCard key={s.label} value={s.value} label={s.label} />
           ))}
         </div>
-        <p
-          className="text-sm leading-relaxed"
-          style={{ color: 'var(--muted)' }}
-        >
+        <p className="text-sm leading-relaxed text-[#71717a]">
           {RESULTS.narrative}
         </p>
       </section>
 
       {/* ===== TECH STACK ===== */}
       <section className="mb-20">
-        <SectionTitle>Tech Stack</SectionTitle>
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          Tech Stack
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {TECH_STACK.map((item, i) => (
-            <motion.div
+          {TECH_STACK.map((item) => (
+            <div
               key={item.name}
-              className="rounded-lg border p-4 flex items-center gap-3"
-              style={{
-                backgroundColor: 'var(--card-bg)',
-                borderColor: 'var(--card-border)',
-              }}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: i * 0.05 }}
+              className="flex items-center gap-3 py-3 border-b border-[#27272a] last:border-b-0"
             >
-              <span
-                className="text-sm font-medium"
-                style={{ color: 'var(--foreground)' }}
-              >
+              <span className="text-sm font-medium text-[#fafafa]">
                 {item.name}
               </span>
-              <span
-                className="text-xs"
-                style={{ color: 'var(--muted-dim)' }}
-              >
+              <span className="text-xs text-[#52525b]">
                 {item.role}
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
       {/* ===== LESSONS LEARNED ===== */}
       <section className="mb-10">
-        <SectionTitle>Lessons Learned</SectionTitle>
-        <div className="space-y-4">
-          {LESSONS_LEARNED.map((lesson, i) => (
-            <motion.div
-              key={lesson.title}
-              className="rounded-xl border p-6"
-              style={{
-                backgroundColor: 'var(--card-bg)',
-                borderColor: 'var(--card-border)',
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-            >
-              <h4
-                className="text-base font-semibold mb-2"
-                style={{ color: 'var(--foreground)' }}
-              >
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          Lessons Learned
+        </h2>
+        <div className="space-y-6">
+          {LESSONS_LEARNED.map((lesson) => (
+            <div key={lesson.title} className="border-b border-[#27272a] pb-6 last:border-b-0">
+              <h4 className="text-sm font-semibold text-[#fafafa] mb-2">
                 {lesson.title}
               </h4>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: 'var(--muted)' }}
-              >
+              <p className="text-sm leading-relaxed text-[#71717a]">
                 {lesson.body}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>

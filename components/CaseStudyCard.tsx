@@ -12,7 +12,7 @@ interface CaseStudyCardProps {
   href: string;
   github?: string;
   demo?: string;
-  featured?: boolean;
+  screenshot?: string;
 }
 
 export default function CaseStudyCard({
@@ -24,155 +24,95 @@ export default function CaseStudyCard({
   href,
   github,
   demo,
-  featured = false,
+  screenshot,
 }: CaseStudyCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
     >
       <a
         href={href}
-        className="group block relative rounded-2xl border p-6 md:p-8 transition-all duration-300 hover:translate-y-[-2px]"
-        style={{
-          backgroundColor: featured
-            ? 'rgba(var(--primary-rgb), 0.04)'
-            : 'var(--card-bg)',
-          borderColor: featured
-            ? 'rgba(var(--primary-rgb), 0.25)'
-            : 'var(--card-border)',
-        }}
+        className="group block rounded-lg border border-[#27272a] bg-[#18181b] p-6 md:p-8 transition-all duration-200 hover:border-[#3f3f46] hover:-translate-y-0.5"
       >
-        {/* Hover glow */}
-        <div
-          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse at center, rgba(var(--primary-rgb), 0.08), transparent 70%)',
-            boxShadow: '0 0 60px rgba(var(--primary-rgb), 0.1)',
-          }}
-        />
-
-        <div className="relative z-10">
-          {/* Header */}
-          <div className="mb-4">
-            {featured && (
-              <span
-                className="text-xs uppercase tracking-widest font-medium mb-3 block"
-                style={{ color: 'var(--primary-light)' }}
-              >
-                Featured Case Study
-              </span>
-            )}
-            <h3
-              className={`font-bold tracking-tight mb-2 ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}`}
-              style={{ color: 'var(--foreground)' }}
-            >
-              {title}
-            </h3>
-            <p
-              className="text-sm"
-              style={{ color: 'var(--primary-light)' }}
-            >
-              {subtitle}
-            </p>
+        {/* Screenshot */}
+        {screenshot && (
+          <div className="mb-6 rounded-md overflow-hidden border border-[#27272a]">
+            <img
+              src={screenshot}
+              alt={`${title} screenshot`}
+              className="w-full h-auto"
+              loading="lazy"
+            />
           </div>
+        )}
 
-          {/* Description */}
-          <p
-            className="text-sm leading-relaxed mb-6"
-            style={{ color: 'var(--muted)' }}
-          >
-            {description}
-          </p>
+        {/* Header */}
+        <h3 className="text-xl font-semibold text-[#fafafa] mb-1">
+          {title}
+        </h3>
+        <p className="text-sm text-[#a1a1aa] mb-4">
+          {subtitle}
+        </p>
 
-          {/* Metrics row */}
-          <div className="flex gap-6 mb-6">
-            {metrics.map((metric) => (
-              <div key={metric.label}>
-                <div
-                  className="text-xl font-bold"
-                  style={{ color: 'var(--primary-light)' }}
-                >
-                  {metric.value}
-                </div>
-                <div
-                  className="text-xs uppercase tracking-wider"
-                  style={{ color: 'var(--muted-dim)' }}
-                >
-                  {metric.label}
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Description */}
+        <p className="text-sm leading-relaxed text-[#71717a] mb-6">
+          {description}
+        </p>
 
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs px-2.5 py-1 rounded-full font-medium"
-                style={{
-                  backgroundColor: 'rgba(var(--primary-rgb), 0.1)',
-                  color: 'var(--primary-light)',
-                  border: '1px solid rgba(var(--primary-rgb), 0.15)',
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {/* Links */}
-          <div className="flex items-center gap-4">
+        {/* Metrics */}
+        <div className="flex flex-wrap gap-3 mb-6">
+          {metrics.map((metric) => (
             <span
-              className="text-xs font-medium flex items-center gap-1 group-hover:gap-2 transition-all duration-300"
-              style={{ color: 'var(--primary-light)' }}
+              key={metric.label}
+              className="text-xs px-3 py-1.5 rounded-md bg-[#27272a] text-[#a1a1aa]"
             >
-              Read case study
-              <svg
-                className="w-3 h-3"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
+              <span className="font-semibold text-[#fafafa]">{metric.value}</span>
+              {' '}{metric.label}
             </span>
+          ))}
+        </div>
 
-            {github && (
-              <span
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.open(github, '_blank');
-                }}
-                className="text-xs font-medium cursor-pointer hover:underline"
-                style={{ color: 'var(--muted)' }}
-              >
-                GitHub
-              </span>
-            )}
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-xs text-[#71717a]"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
 
-            {demo && (
-              <span
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.open(demo, '_blank');
-                }}
-                className="text-xs font-medium cursor-pointer hover:underline"
-                style={{ color: 'var(--muted)' }}
-              >
-                Live Demo
-              </span>
-            )}
-          </div>
+        {/* Links */}
+        <div className="flex items-center gap-4">
+          <span className="text-xs font-medium text-[#3b82f6] flex items-center gap-1 group-hover:gap-2 transition-all duration-200">
+            Read case study
+            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </span>
+
+          {github && (
+            <span
+              onClick={(e) => { e.preventDefault(); window.open(github, '_blank'); }}
+              className="text-xs text-[#71717a] hover:text-[#a1a1aa] cursor-pointer"
+            >
+              GitHub
+            </span>
+          )}
+
+          {demo && (
+            <span
+              onClick={(e) => { e.preventDefault(); window.open(demo, '_blank'); }}
+              className="text-xs text-[#71717a] hover:text-[#a1a1aa] cursor-pointer"
+            >
+              Live Demo
+            </span>
+          )}
         </div>
       </a>
     </motion.div>

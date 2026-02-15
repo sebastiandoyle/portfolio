@@ -1,7 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
-
 interface MetricCardProps {
   value: string;
   label: string;
@@ -9,33 +7,13 @@ interface MetricCardProps {
 
 export default function MetricCard({ value, label }: MetricCardProps) {
   return (
-    <motion.div
-      className="rounded-2xl border p-6 text-center"
-      style={{
-        backgroundColor: 'var(--card-bg)',
-        borderColor: 'var(--card-border)',
-      }}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      whileHover={{
-        borderColor: 'rgba(var(--primary-rgb), 0.4)',
-        boxShadow: '0 0 40px rgba(var(--primary-rgb), 0.1)',
-      }}
-    >
-      <div
-        className="text-4xl sm:text-5xl font-bold tracking-tight"
-        style={{ color: 'var(--primary-light)' }}
-      >
+    <div className="text-center py-4">
+      <div className="text-3xl sm:text-4xl font-bold tracking-tight text-[#fafafa]">
         {value}
       </div>
-      <div
-        className="mt-2 text-xs sm:text-sm uppercase tracking-widest"
-        style={{ color: 'var(--muted)' }}
-      >
+      <div className="mt-1 text-xs uppercase tracking-wider text-[#71717a]">
         {label}
       </div>
-    </motion.div>
+    </div>
   );
 }

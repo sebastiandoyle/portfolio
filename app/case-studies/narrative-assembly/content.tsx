@@ -19,44 +19,32 @@ import {
   REFLECTIONS,
 } from '@/lib/case-study-content';
 
-function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.h2
-      className="text-2xl md:text-3xl font-bold tracking-tight mb-8"
-      style={{ color: 'var(--foreground)' }}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5 }}
-    >
-      {children}
-    </motion.h2>
-  );
-}
-
 export default function NarrativeAssemblyContent() {
   return (
     <CaseStudyLayout>
       {/* ===== IMPACT BANNER ===== */}
       <section className="mb-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4"
-            style={{ color: 'var(--foreground)' }}
-          >
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#fafafa] mb-3">
             {IMPACT_BANNER.title}
           </h1>
-          <p
-            className="text-lg md:text-xl mb-8"
-            style={{ color: 'var(--primary-light)' }}
-          >
+          <p className="text-lg text-[#a1a1aa] mb-8">
             {IMPACT_BANNER.subtitle}
           </p>
         </motion.div>
+
+        {/* Screenshot */}
+        <div className="mb-8 rounded-lg overflow-hidden border border-[#27272a]">
+          <img
+            src="/screenshots/na-results.png"
+            alt="Narrative Assembly showing search results for immigration"
+            className="w-full h-auto"
+          />
+        </div>
 
         <div className="grid grid-cols-3 gap-4 mb-8">
           {IMPACT_BANNER.metrics.map((m) => (
@@ -69,13 +57,7 @@ export default function NarrativeAssemblyContent() {
             href={IMPACT_BANNER.cta_primary.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium px-6 py-3 rounded-lg border transition-all duration-300 hover:translate-y-[-1px]"
-            style={{
-              background:
-                'linear-gradient(135deg, rgba(var(--primary-rgb), 0.15), rgba(var(--secondary-rgb), 0.15))',
-              borderColor: 'rgba(var(--primary-rgb), 0.3)',
-              color: 'var(--primary-light)',
-            }}
+            className="text-sm font-medium px-6 py-3 rounded-lg border border-[#27272a] text-[#fafafa] hover:border-[#3b82f6] transition-colors duration-200"
           >
             {IMPACT_BANNER.cta_primary.label}
           </a>
@@ -83,12 +65,7 @@ export default function NarrativeAssemblyContent() {
             href={IMPACT_BANNER.cta_secondary.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium px-6 py-3 rounded-lg border transition-all duration-300 hover:translate-y-[-1px]"
-            style={{
-              borderColor: 'rgba(var(--secondary-rgb), 0.3)',
-              color: 'var(--btn-secondary-color)',
-              backgroundColor: 'rgba(var(--secondary-rgb), 0.08)',
-            }}
+            className="text-sm font-medium px-6 py-3 rounded-lg border border-[#27272a] text-[#a1a1aa] hover:border-[#3f3f46] transition-colors duration-200"
           >
             {IMPACT_BANNER.cta_secondary.label}
           </a>
@@ -97,28 +74,28 @@ export default function NarrativeAssemblyContent() {
 
       {/* ===== THE PROBLEM ===== */}
       <section className="mb-20">
-        <SectionTitle>{THE_PROBLEM.headline}</SectionTitle>
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          {THE_PROBLEM.headline}
+        </h2>
         <div className="space-y-4">
           {THE_PROBLEM.paragraphs.map((p, i) => (
-            <motion.p
+            <p
               key={i}
               className="text-sm leading-relaxed"
-              style={{ color: i === 0 ? 'var(--muted-strong)' : 'var(--muted)' }}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
+              style={{ color: i === 0 ? '#a1a1aa' : '#71717a' }}
             >
               {p}
-            </motion.p>
+            </p>
           ))}
         </div>
       </section>
 
       {/* ===== DESIGN THINKING PROCESS ===== */}
       <section className="mb-20">
-        <SectionTitle>Design Thinking Process</SectionTitle>
-        <div className="space-y-4">
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          Design Thinking Process
+        </h2>
+        <div>
           {DESIGN_PHASES.map((phase, i) => (
             <DesignPhaseCard
               key={phase.name}
@@ -133,8 +110,10 @@ export default function NarrativeAssemblyContent() {
 
       {/* ===== CUSTOMER INTERVIEW DEEP DIVE ===== */}
       <section className="mb-20">
-        <SectionTitle>Customer Interview Deep Dive</SectionTitle>
-        <div className="space-y-6">
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          Customer Interview Deep Dive
+        </h2>
+        <div className="space-y-8">
           {INTERVIEW_FINDINGS.map((finding) => (
             <InterviewInsight key={finding.id} {...finding} />
           ))}
@@ -143,159 +122,105 @@ export default function NarrativeAssemblyContent() {
 
       {/* ===== ITERATION EVIDENCE ===== */}
       <section className="mb-20">
-        <SectionTitle>Iteration Evidence</SectionTitle>
-        <p
-          className="text-sm leading-relaxed mb-6"
-          style={{ color: 'var(--muted)' }}
-        >
-          Every piece of user feedback mapped to a code change. Nothing
-          was hand-waved or deferred.
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          Iteration Evidence
+        </h2>
+        <p className="text-sm leading-relaxed text-[#71717a] mb-6">
+          Every piece of user feedback mapped to a code change. Nothing was hand-waved or deferred.
         </p>
         <IterationTable rows={ITERATION_TABLE} />
       </section>
 
       {/* ===== AI ACCELERATION ===== */}
       <section className="mb-20">
-        <SectionTitle>How AI Accelerated Every Stage</SectionTitle>
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          How AI Accelerated Every Stage
+        </h2>
 
-        <motion.blockquote
-          className="rounded-xl border-l-4 p-6 mb-8"
-          style={{
-            borderColor: 'var(--primary)',
-            backgroundColor: 'rgba(var(--primary-rgb), 0.04)',
-          }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <p
-            className="text-sm md:text-base italic leading-relaxed"
-            style={{ color: 'var(--muted-strong)' }}
-          >
+        <blockquote className="border-l-2 border-[#3b82f6] pl-6 py-2 mb-8">
+          <p className="text-sm leading-relaxed text-[#a1a1aa]">
             {AI_ACCELERATION_NARRATIVE}
           </p>
-        </motion.blockquote>
+        </blockquote>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {AI_USAGE.map((item, i) => (
-            <motion.div
+          {AI_USAGE.map((item) => (
+            <div
               key={item.stage}
-              className="rounded-xl border p-5"
-              style={{
-                backgroundColor: 'var(--card-bg)',
-                borderColor: 'var(--card-border)',
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
+              className="rounded-lg border border-[#27272a] bg-[#18181b] p-5"
             >
               <div className="flex items-center gap-2 mb-2">
-                <span
-                  className="text-xs font-bold uppercase tracking-widest"
-                  style={{ color: 'var(--primary-light)' }}
-                >
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#fafafa]">
                   {item.stage}
                 </span>
-                <span
-                  className="text-xs px-2 py-0.5 rounded-full"
-                  style={{
-                    backgroundColor: 'rgba(var(--secondary-rgb), 0.1)',
-                    color: 'var(--btn-secondary-color)',
-                  }}
-                >
+                <span className="text-xs px-2 py-0.5 rounded bg-[#27272a] text-[#71717a]">
                   {item.tool}
                 </span>
               </div>
-              <p className="text-xs leading-relaxed" style={{ color: 'var(--muted)' }}>
+              <p className="text-xs leading-relaxed text-[#71717a]">
                 {item.description}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
       {/* ===== TECHNICAL ARCHITECTURE ===== */}
       <section className="mb-20">
-        <SectionTitle>{TECHNICAL_ARCHITECTURE.headline}</SectionTitle>
-        <p
-          className="text-sm leading-relaxed mb-8"
-          style={{ color: 'var(--muted)' }}
-        >
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          {TECHNICAL_ARCHITECTURE.headline}
+        </h2>
+        <p className="text-sm leading-relaxed text-[#71717a] mb-8">
           {TECHNICAL_ARCHITECTURE.description}
         </p>
 
-        {/* Pipeline diagram */}
-        <div className="flex flex-col sm:flex-row gap-3 mb-8">
-          {TECHNICAL_ARCHITECTURE.pipeline.map((step, i) => (
-            <motion.div
+        {/* Pipeline */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+          {TECHNICAL_ARCHITECTURE.pipeline.map((step) => (
+            <div
               key={step.step}
-              className="flex-1 rounded-xl border p-5 text-center"
-              style={{
-                backgroundColor: 'var(--card-bg)',
-                borderColor: 'var(--card-border)',
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
+              className="rounded-lg border border-[#27272a] p-4 text-center"
             >
-              <div
-                className="text-lg font-bold mb-1"
-                style={{ color: 'var(--primary-light)' }}
-              >
+              <div className="text-sm font-semibold text-[#fafafa] mb-1">
                 {step.step}
               </div>
-              <p className="text-xs leading-relaxed" style={{ color: 'var(--muted)' }}>
+              <p className="text-xs leading-relaxed text-[#71717a]">
                 {step.detail}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Decisions */}
         <div className="space-y-3">
-          {TECHNICAL_ARCHITECTURE.decisions.map((d, i) => (
-            <motion.div
+          {TECHNICAL_ARCHITECTURE.decisions.map((d) => (
+            <div
               key={d.decision}
-              className="rounded-lg border p-4 flex flex-col sm:flex-row gap-2"
-              style={{
-                backgroundColor: 'var(--card-bg)',
-                borderColor: 'var(--card-border)',
-              }}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: i * 0.08 }}
+              className="flex flex-col sm:flex-row gap-2 py-3 border-b border-[#27272a] last:border-b-0"
             >
-              <span
-                className="text-sm font-medium shrink-0 sm:w-48"
-                style={{ color: 'var(--foreground)' }}
-              >
+              <span className="text-sm font-medium text-[#fafafa] shrink-0 sm:w-48">
                 {d.decision}
               </span>
-              <span
-                className="text-sm leading-relaxed"
-                style={{ color: 'var(--muted)' }}
-              >
+              <span className="text-sm leading-relaxed text-[#71717a]">
                 {d.rationale}
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
       {/* ===== BUSINESS VISION ===== */}
       <section className="mb-20">
-        <SectionTitle>{BUSINESS_VISION.headline}</SectionTitle>
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          {BUSINESS_VISION.headline}
+        </h2>
 
         <div className="space-y-4 mb-8">
           {BUSINESS_VISION.paragraphs.map((p, i) => (
             <p
               key={i}
               className="text-sm leading-relaxed"
-              style={{ color: i === 0 ? 'var(--muted-strong)' : 'var(--muted)' }}
+              style={{ color: i === 0 ? '#a1a1aa' : '#71717a' }}
             >
               {p}
             </p>
@@ -303,27 +228,14 @@ export default function NarrativeAssemblyContent() {
         </div>
 
         {/* Market evidence */}
-        <div
-          className="rounded-xl border p-6 mb-6"
-          style={{
-            backgroundColor: 'var(--card-bg)',
-            borderColor: 'var(--card-border)',
-          }}
-        >
-          <p
-            className="text-xs uppercase tracking-widest mb-3"
-            style={{ color: 'var(--primary-light)' }}
-          >
+        <div className="rounded-lg border border-[#27272a] p-6 mb-6">
+          <p className="text-xs uppercase tracking-wider text-[#a1a1aa] mb-3">
             Market Evidence
           </p>
           <ul className="space-y-2">
             {BUSINESS_VISION.evidence.map((e, i) => (
-              <li
-                key={i}
-                className="text-sm leading-relaxed flex items-start gap-2"
-                style={{ color: 'var(--muted)' }}
-              >
-                <span style={{ color: 'var(--primary-light)' }}>&#8226;</span>
+              <li key={i} className="text-sm leading-relaxed text-[#71717a] flex items-start gap-2">
+                <span className="text-[#3b82f6]">&#8226;</span>
                 {e}
               </li>
             ))}
@@ -331,27 +243,14 @@ export default function NarrativeAssemblyContent() {
         </div>
 
         {/* Expansion */}
-        <div
-          className="rounded-xl border p-6"
-          style={{
-            backgroundColor: 'var(--card-bg)',
-            borderColor: 'var(--card-border)',
-          }}
-        >
-          <p
-            className="text-xs uppercase tracking-widest mb-3"
-            style={{ color: 'var(--accent)' }}
-          >
+        <div className="rounded-lg border border-[#27272a] p-6">
+          <p className="text-xs uppercase tracking-wider text-[#a1a1aa] mb-3">
             Expansion Opportunities
           </p>
           <ul className="space-y-2">
             {BUSINESS_VISION.expansion.map((e, i) => (
-              <li
-                key={i}
-                className="text-sm leading-relaxed flex items-start gap-2"
-                style={{ color: 'var(--muted)' }}
-              >
-                <span style={{ color: 'var(--accent)' }}>&#8226;</span>
+              <li key={i} className="text-sm leading-relaxed text-[#71717a] flex items-start gap-2">
+                <span className="text-[#3b82f6]">&#8226;</span>
                 {e}
               </li>
             ))}
@@ -361,34 +260,19 @@ export default function NarrativeAssemblyContent() {
 
       {/* ===== WHAT I'D DO DIFFERENTLY ===== */}
       <section className="mb-10">
-        <SectionTitle>What I&apos;d Do Differently</SectionTitle>
-        <div className="space-y-4">
-          {REFLECTIONS.map((r, i) => (
-            <motion.div
-              key={r.title}
-              className="rounded-xl border p-6"
-              style={{
-                backgroundColor: 'var(--card-bg)',
-                borderColor: 'var(--card-border)',
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-            >
-              <h4
-                className="text-base font-semibold mb-2"
-                style={{ color: 'var(--foreground)' }}
-              >
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          What I&apos;d Do Differently
+        </h2>
+        <div className="space-y-6">
+          {REFLECTIONS.map((r) => (
+            <div key={r.title} className="border-b border-[#27272a] pb-6 last:border-b-0">
+              <h4 className="text-sm font-semibold text-[#fafafa] mb-2">
                 {r.title}
               </h4>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: 'var(--muted)' }}
-              >
+              <p className="text-sm leading-relaxed text-[#71717a]">
                 {r.body}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
