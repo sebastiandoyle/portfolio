@@ -41,7 +41,7 @@ export default function AppPipelineContent() {
           href={PIPELINE_BANNER.cta_primary.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block text-sm font-medium px-6 py-3 rounded-lg border border-[#27272a] text-[#fafafa] hover:border-[#3b82f6] transition-colors duration-200"
+          className="inline-block text-sm font-medium px-6 py-3 rounded-lg border border-[#27272a] text-[#fafafa] hover:border-[#1d4ed8] transition-colors duration-200"
         >
           {PIPELINE_BANNER.cta_primary.label}
         </a>
@@ -61,6 +61,38 @@ export default function AppPipelineContent() {
             >
               {p}
             </p>
+          ))}
+        </div>
+      </section>
+
+      {/* ===== APP GALLERY ===== */}
+      <section className="mb-20">
+        <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
+          App Gallery
+        </h2>
+        <p className="text-sm leading-relaxed text-[#71717a] mb-6">
+          A selection of apps produced by the pipeline — clean, polished, and ready for the App Store.
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          {[
+            { src: '/screenshots/apps/anchor-habits.png', name: 'Anchor' },
+            { src: '/screenshots/apps/anchor-insights.png', name: 'Anchor Insights' },
+            { src: '/screenshots/apps/stillpoint-home.png', name: 'Stillpoint' },
+            { src: '/screenshots/apps/stillpoint-meditate.png', name: 'Stillpoint Meditate' },
+            { src: '/apps/screenshots/imposter/1.png', name: 'Imposter' },
+            { src: '/apps/screenshots/cleansnap/1.png', name: 'CleanSnap' },
+          ].map((app) => (
+            <div key={app.name} className="group">
+              <div className="rounded-xl overflow-hidden border border-[#27272a] bg-[#18181b] shadow-sm">
+                <img
+                  src={app.src}
+                  alt={`${app.name} screenshot`}
+                  className="w-full h-auto"
+                  loading="lazy"
+                />
+              </div>
+              <p className="text-xs text-[#71717a] mt-2 text-center">{app.name}</p>
+            </div>
           ))}
         </div>
       </section>

@@ -50,7 +50,7 @@ export default function ProjectCard({
         </div>
 
         {href && (
-          <div className="mt-4 text-xs font-medium text-[#3b82f6] flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="mt-4 text-xs font-medium text-[#1d4ed8] flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             View project
             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

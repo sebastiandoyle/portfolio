@@ -1,0 +1,11 @@
+{
+  "app_id": "6756529558",
+  "analytics": {
+    "performance": "not_available"
+  },
+  "app_info": {
+    "name": "Imposter - Party Word Game",
+    "bundleId": "com.sebastiandoyle.imposter",
+    "sku": "imposter.partygame.001"
+  }
+}

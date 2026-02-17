@@ -89,7 +89,7 @@ export default function CaseStudyCard({
 
         {/* Links */}
         <div className="flex items-center gap-4">
-          <span className="text-xs font-medium text-[#3b82f6] flex items-center gap-1 group-hover:gap-2 transition-all duration-200">
+          <span className="text-xs font-medium text-[#1d4ed8] flex items-center gap-1 group-hover:gap-2 transition-all duration-200">
             Read case study
             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />

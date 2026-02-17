@@ -8,7 +8,7 @@
   --border: #27272a;
   --card: #18181b;
   --card-foreground: #fafafa;
-  --accent: #3b82f6;
+  --accent: #1d4ed8;
   --accent-muted: #1d4ed8;
 }
 
@@ -35,7 +35,7 @@ body {
 }
 
 ::selection {
-  background: rgba(59, 130, 246, 0.3);
+  background: rgba(29, 78, 216, 0.3);
 }
 
 ::-webkit-scrollbar { width: 6px; }

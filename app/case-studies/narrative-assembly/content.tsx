@@ -57,7 +57,7 @@ export default function NarrativeAssemblyContent() {
             href={IMPACT_BANNER.cta_primary.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium px-6 py-3 rounded-lg border border-[#27272a] text-[#fafafa] hover:border-[#3b82f6] transition-colors duration-200"
+            className="text-sm font-medium px-6 py-3 rounded-lg border border-[#27272a] text-[#fafafa] hover:border-[#1d4ed8] transition-colors duration-200"
           >
             {IMPACT_BANNER.cta_primary.label}
           </a>
@@ -90,6 +90,15 @@ export default function NarrativeAssemblyContent() {
         </div>
       </section>
 
+      {/* Homepage screenshot */}
+      <div className="mb-20 rounded-lg overflow-hidden border border-[#27272a]">
+        <img
+          src="/screenshots/na-home.png"
+          alt="Narrative Assembly homepage with search bar and trending topics"
+          className="w-full h-auto"
+        />
+      </div>
+
       {/* ===== DESIGN THINKING PROCESS ===== */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold tracking-tight text-[#fafafa] mb-6">
@@ -107,6 +116,15 @@ export default function NarrativeAssemblyContent() {
           ))}
         </div>
       </section>
+
+      {/* About page screenshot */}
+      <div className="mb-20 rounded-lg overflow-hidden border border-[#27272a]">
+        <img
+          src="/screenshots/na-about.png"
+          alt="Narrative Assembly about page"
+          className="w-full h-auto"
+        />
+      </div>
 
       {/* ===== CUSTOMER INTERVIEW DEEP DIVE ===== */}
       <section className="mb-20">
@@ -137,7 +155,7 @@ export default function NarrativeAssemblyContent() {
           How AI Accelerated Every Stage
         </h2>
 
-        <blockquote className="border-l-2 border-[#3b82f6] pl-6 py-2 mb-8">
+        <blockquote className="border-l-2 border-[#1d4ed8] pl-6 py-2 mb-8">
           <p className="text-sm leading-relaxed text-[#a1a1aa]">
             {AI_ACCELERATION_NARRATIVE}
           </p>
@@ -235,7 +253,7 @@ export default function NarrativeAssemblyContent() {
           <ul className="space-y-2">
             {BUSINESS_VISION.evidence.map((e, i) => (
               <li key={i} className="text-sm leading-relaxed text-[#71717a] flex items-start gap-2">
-                <span className="text-[#3b82f6]">&#8226;</span>
+                <span className="text-[#1d4ed8]">&#8226;</span>
                 {e}
               </li>
             ))}
@@ -250,7 +268,7 @@ export default function NarrativeAssemblyContent() {
           <ul className="space-y-2">
             {BUSINESS_VISION.expansion.map((e, i) => (
               <li key={i} className="text-sm leading-relaxed text-[#71717a] flex items-start gap-2">
-                <span className="text-[#3b82f6]">&#8226;</span>
+                <span className="text-[#1d4ed8]">&#8226;</span>
                 {e}
               </li>
             ))}

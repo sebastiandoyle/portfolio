@@ -19,7 +19,7 @@ export default function InterviewInsight({
 }: InterviewInsightProps) {
   return (
     <motion.div
-      className="border-l-2 border-[#3b82f6] pl-6 py-2"
+      className="border-l-2 border-[#1d4ed8] pl-6 py-2"
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
@@ -46,7 +46,7 @@ export default function InterviewInsight({
 
       {/* Fix */}
       <div>
-        <p className="text-xs uppercase tracking-wider text-[#3b82f6] mb-1">Fix Applied</p>
+        <p className="text-xs uppercase tracking-wider text-[#1d4ed8] mb-1">Fix Applied</p>
         <p className="text-sm leading-relaxed text-[#a1a1aa]">{fix}</p>
       </div>
     </motion.div>

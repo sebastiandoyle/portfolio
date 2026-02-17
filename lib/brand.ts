@@ -39,6 +39,8 @@ export const HERO_COPY = {
   subtitle: "AI Systems Engineer",
   tagline:
     "I close the gap between 'we should use AI' and 'it's in production.'",
+  howIWork:
+    "ChatGPT for thinking \u2192 Claude Code for building \u2192 Test with real users \u2192 Ship",
   cta_primary: "See the case study",
   cta_secondary: "View GitHub",
 } as const;
@@ -73,7 +75,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: "narrative-assembly",
     title: "Narrative Assembly",
     subtitle:
-      "From idea to tested product in 7 days using AI-accelerated design thinking",
+      "Making media manipulation visible \u2014 from idea to tested product in 7 days",
     description:
       "Social media builds narratives by cherry-picking clips from real news. Narrative Assembly makes that machinery visible — and I built it in a week, with real user testing baked into the process.",
     metrics: [
@@ -100,6 +102,20 @@ export const CASE_STUDIES: CaseStudy[] = [
     tags: ["Swift", "Claude Code", "Fastlane", "ASC API"],
     href: "/case-studies/app-pipeline",
     github: "https://github.com/sebastiandoyle/foundry",
+  },
+  {
+    slug: "feedback-loop",
+    title: "This Portfolio",
+    subtitle: "You visit, you vote, I build what you asked for",
+    description:
+      "This site has a feedback loop built in. You click a suggestion, it gets counted, and when enough people agree, I implement the change. Three changes have shipped so far — each one marked in red.",
+    metrics: [
+      { value: "20", label: "Suggestions" },
+      { value: "3", label: "Shipped" },
+      { value: "Live", label: "Right Now" },
+    ],
+    tags: ["Next.js", "API Routes", "Framer Motion"],
+    href: "/case-studies/feedback-loop",
   },
 ];
 

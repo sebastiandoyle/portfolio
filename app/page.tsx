@@ -3,18 +3,21 @@
 import { motion } from 'framer-motion';
 import Hero from '@/components/Hero';
 import CaseStudyCard from '@/components/CaseStudyCard';
+import LiveCaseStudyCard from '@/components/LiveCaseStudyCard';
 import ProjectCard from '@/components/ProjectCard';
-import AppIconWall from '@/components/AppIconWall';
-import AppSpotlight from '@/components/AppSpotlight';
-import StatCard from '@/components/StatCard';
+import FeedbackWidget from '@/components/FeedbackWidget';
+import ChangeMarker from '@/components/ChangeMarker';
+import AmbientLoop from '@/components/AmbientLoop';
 import { CASE_STUDIES, PROJECTS, ABOUT_COPY } from '@/lib/brand';
-import { FOUNDRY_STATS } from '@/lib/app-data';
 
 export default function Home() {
   return (
     <main className="relative">
-      {/* ===== 1. HERO ===== */}
-      <Hero />
+      {/* ===== 1. HERO + NECKLACE LOOP ===== */}
+      <div className="relative">
+        <Hero />
+        <AmbientLoop />
+      </div>
 
       {/* ===== 2. CASE STUDIES ===== */}
       <section id="case-studies" className="py-24 px-6">
@@ -23,45 +26,27 @@ export default function Home() {
             Case Studies
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <CaseStudyCard
-              {...CASE_STUDIES[0]}
-              screenshot="/screenshots/na-results.png"
-            />
-            <CaseStudyCard {...CASE_STUDIES[1]} />
-          </div>
-        </div>
-      </section>
-
-      <hr className="border-[#27272a] max-w-5xl mx-auto" />
-
-      {/* ===== 3. APP PIPELINE EVIDENCE ===== */}
-      <section className="py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-xs uppercase tracking-[0.2em] text-[#71717a] mb-10">
-            App Pipeline
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Left: App icons */}
-            <div className="rounded-lg border border-[#27272a] bg-[#18181b] p-6">
-              <AppIconWall />
-              <div className="grid grid-cols-3 gap-4 mt-6">
-                {FOUNDRY_STATS.map((stat) => (
-                  <StatCard key={stat.label} value={stat.value} label={stat.label} />
-                ))}
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Narrative Assembly — ChangeMarker #3 (subtitle reframed) */}
+            <div className="relative">
+              <span className="absolute top-4 right-4 z-10">
+                <ChangeMarker number={3} />
+              </span>
+              <CaseStudyCard
+                {...CASE_STUDIES[0]}
+                screenshot="/screenshots/na-results.png"
+              />
             </div>
-
-            {/* Right: Featured app */}
-            <AppSpotlight />
+            <CaseStudyCard {...CASE_STUDIES[1]} />
+            <LiveCaseStudyCard />
           </div>
         </div>
       </section>
 
-      <hr className="border-[#27272a] max-w-5xl mx-auto" />
+      {/* ===== FEEDBACK WIDGET ===== */}
+      <FeedbackWidget />
 
-      {/* ===== 4. PROJECTS GRID ===== */}
+      {/* ===== 3. PROJECTS GRID ===== */}
       <section id="projects" className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xs uppercase tracking-[0.2em] text-[#71717a] mb-10">
@@ -108,6 +93,39 @@ export default function Home() {
               </p>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* ===== LET'S TALK — added via Feedback Loop change #2 ===== */}
+      <section className="py-20 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="relative inline-block mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#fafafa]">
+              Let&apos;s talk
+            </h2>
+            <span className="absolute -top-2 -right-7">
+              <ChangeMarker number={2} />
+            </span>
+          </div>
+          <p className="text-sm text-[#71717a] mb-8 max-w-md mx-auto">
+            If you need someone who can ship AI-powered products at startup speed, I&apos;d love to hear from you.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="mailto:sebastian.doyle@outlook.com"
+              className="text-sm font-medium px-6 py-3 rounded-lg border border-[#27272a] text-[#fafafa] hover:border-[#1d4ed8] transition-colors duration-200"
+            >
+              Email me
+            </a>
+            <a
+              href="https://www.linkedin.com/in/sebastiandoyle"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium px-6 py-3 rounded-lg border border-[#27272a] text-[#a1a1aa] hover:border-[#1d4ed8] hover:text-[#fafafa] transition-colors duration-200"
+            >
+              LinkedIn
+            </a>
+          </div>
         </div>
       </section>
 
